@@ -1,11 +1,17 @@
+#use python 3.9 as the base image
 FROM python:3.9
 
+#set working directory
 WORKDIR /src
 
+#copy all files from current directory to /src directory
 ADD . /src
 
+#install dependencies listed in the requirements.txt file
 RUN pip install --no-cache-dir -r requirements.txt
 
+#expose port 5000 to allow external connections
 EXPOSE 5000
 
+#specify command to run when container starts
 CMD python server.py

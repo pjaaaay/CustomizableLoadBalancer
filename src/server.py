@@ -2,12 +2,13 @@
 from flask import Flask,jsonify
 import os
 
-server= Flask(__name__)
+#create a flask application instance
+app= Flask(__name__)
 
-
-@server.route('/')
+#define a route for the index page
+@app.route('/')
 def index():
-
+#define html content for the index page
     html_content="""" <!DOCTYPE html>
 <html>
 <head>
@@ -22,19 +23,27 @@ def index():
 </html>
 """
       
+    #return the html content as a reponse with status code 200
     return html_content,200
 
-@server.route('/home',methods=['GET'])
+
+#define a route for home endpount with GET method
+@app.route('/home',methods=['GET'])
 def home():
 
+    #get server ID from environment variable 'SERVER ID' and default to 0 if not sent
     server_id =os.getenv('SERVER_ID','0')
+   #return a json message with server id, status successful and 200 status code
     return jsonify(message=f'Hello from Server:{server_id}',status='successful'),200
 
-@server.route('/heartbeat',methods=['GET'])
+#define route for heartbeat endpoint
+@app.route('/heartbeat',methods=['GET'])
 def heartbeat():
-    return'',200
+   #return an empty reponse with status code 200
+     return'',200
     
 
+#start the Flask server listening on all network interfaces
 if __name__=='__main__':
-    server.run(host='0.0.0.0',port=5000)
+    app.run(host='0.0.0.0',port=5000)
 
