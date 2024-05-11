@@ -9,7 +9,7 @@ app= Flask(__name__)
 @app.route('/')
 def index():
 #define html content for the index page
-    html_content="""" <!DOCTYPE html>
+    html_content="""<!DOCTYPE html>
 <html>
 <head>
     <title>My Flask App</title>
