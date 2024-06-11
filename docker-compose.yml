@@ -1,7 +1,5 @@
-#specify the docker compose file version
 version: '3.9'
 
-#define the services for the application
 services:
   postgres:
     image: postgres:14-alpine
@@ -14,10 +12,34 @@ services:
       - POSTGRES_USER=citizix_user
       - POSTGRES_DB=citizix_db
 
-  app:
-    build: /src
+  load_balancer:
+    build:
+      context: ./src
+      dockerfile: Dockerfile # Dockerfile for the load balancer
     ports:
-      - 5000:5000
+      - "5000:5000"
     depends_on:
-      - postgres
+      - web_server1
+      - web_server2
+      - web_server3
 
+  web_server1:
+    build:
+      context: ./src
+      dockerfile: Dockerfile.server # Dockerfile for the server
+    environment:
+      - SERVER_ID=1
+
+  web_server2:
+    build:
+      context: ./src
+      dockerfile: Dockerfile.server # Dockerfile for the server
+    environment:
+      - SERVER_ID=2
+
+  web_server3:
+    build:
+      context: ./src
+      dockerfile: Dockerfile.server # Dockerfile for the server
+    environment:
+      - SERVER_ID=3
