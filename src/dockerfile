@@ -1,17 +1,10 @@
-#use python 3.9 as the base image
-FROM python:3.9
+# Dockerfile for Load Balancer
+FROM python:3.9-slim
 
-#set working directory
-WORKDIR /src
+WORKDIR /app
 
-#copy all files from current directory to /src directory
-ADD . /src
+COPY . /app
 
-#install dependencies listed in the requirements.txt file
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install flask docker
 
-#expose port 5000 to allow external connections
-EXPOSE 5000
-
-#specify command to run when container starts
-CMD python server.py
+CMD ["python", "loadbalancer.py"]
