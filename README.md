@@ -41,19 +41,7 @@ Follow the steps below to get CustomizableLoadBalancer up and running on your lo
     ```bash
     pip install flask
     ```
-3. Install flask
-    ```bash
-    .PHONY: build up down
 
-	build:
-		docker-compose build
-
-	up:
-		docker-compose up -d
-
-	down:
-		docker-compose down
-    ```
 ### Project Directory
     ```bash
     	/project-directory
@@ -68,7 +56,19 @@ Follow the steps below to get CustomizableLoadBalancer up and running on your lo
 
 
 You've successfully set up CustomizableLoadBalancer on your machine.
+3. Run the Load Balancer
+    ```bash
+    .PHONY: build up down
 
+	build:
+		docker-compose build
+
+	up:
+		docker-compose up -d
+
+	down:
+		docker-compose down
+    ```
 ## Development Environment
 	OS: Ubuntu 20.04 LTS or above
 	• Docker: Version 20.10.23 or above
