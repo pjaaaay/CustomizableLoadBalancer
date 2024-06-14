@@ -55,7 +55,8 @@ Follow the steps below to get CustomizableLoadBalancer up and running on your lo
     ```
 
 
-You've successfully set up CustomizableLoadBalancer on your machine.
+
+
 3. Run the Load Balancer
     ```bash
     .PHONY: build up down
