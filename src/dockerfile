@@ -1,10 +1,15 @@
 # Dockerfile for Load Balancer
+# Use the official Python 3.9 slim image as the base image
 FROM python:3.9-slim
 
+# Set the working directory inside the container to /app
 WORKDIR /app
 
+# Copy all files from the current directory on the host to /app in the container
 COPY . /app
 
+# Install necessary Python packages: Flask and Docker
 RUN pip install flask docker
 
+# Define the command to run the load balancer application when the container starts
 CMD ["python", "loadbalancer.py"]
