@@ -22,6 +22,7 @@ class ConsistentHash:
             self.server_map[hash_value] = server_id
 
     def remove_server(self, server_id):
+        # Remove a server and its virtual nodes from the hash ring
         for i in range(self.num_virtual_servers):
             virtual_node_key = f"{server_id}-{i}"
             hash_value = self._hash(virtual_node_key)
@@ -31,6 +32,7 @@ class ConsistentHash:
                 del self.server_map[hash_value]
 
     def get_server(self, key):
+        # Get the server that should handle the given key
         if not self.ring:
             return None
         hash_value = self._hash(key)
