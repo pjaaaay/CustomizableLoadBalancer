@@ -8,7 +8,7 @@ import os
 from consistent_hash import ConsistentHash
 from flask import Flask,jsonify
 
-# Define the server application (replicating server.py)
+# Defining the server application (replicating server.py)
 server_app = Flask(__name__)
 
 @server_app.route('/')
