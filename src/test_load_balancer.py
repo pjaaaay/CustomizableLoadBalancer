@@ -60,6 +60,7 @@ async def send_requests(num_requests, num_servers):
         times = await asyncio.gather(*tasks)
     return times
 
+# Ploting a bar graph with the given request counts, adds titles and labels, saves the plot as an image file, and displays it.
 def plot_results(request_counts, title, xlabel, ylabel, file_name):
     plt.figure(figsize=(10, 5))
     plt.bar(range(len(request_counts)), request_counts)
