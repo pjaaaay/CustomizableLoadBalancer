@@ -54,7 +54,7 @@ async def send_requests(num_requests, num_servers):
     async with aiohttp.ClientSession() as session:
         tasks = []
         for i in range(num_requests):
-            server_num = i % num_servers + 1  # Distribute requests across servers
+            server_num = i % num_servers + 1  # Distributing requests across servers
             url = f'http://localhost:500{server_num}/home'
             tasks.append(make_request(session, url))
         times = await asyncio.gather(*tasks)
@@ -69,6 +69,7 @@ def plot_results(request_counts, title, xlabel, ylabel, file_name):
     plt.savefig(file_name)
     plt.show()
 
+    # Ploting a line graph with the given x and y data, adds titles and labels, saves the plot as an image file, and displays it.
 def plot_line_chart(x, y, title, xlabel, ylabel, file_name):
     plt.figure(figsize=(10, 5))
     plt.plot(x, y, marker='o')
